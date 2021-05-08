@@ -5,6 +5,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const fs = require('fs');
 const util = require('util');
+const generateTeamHtml = require('../Team-Profile-Generator/Src/Genteam');
 
 // create writeFile function using promises instead of a callback function
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -15,22 +16,26 @@ const promptUser1 = () => {
       type: 'input',
       name: 'name',
       message: 'What is your manager\'s name?',
+      default: 'John Smith',
     },
     {
       type: 'input',
       name: 'id',
       message: 'What\'s your manager\'s id?',
+      default: '01'
     },
    
     {
       type: 'input',
       name: 'email',
-      message: 'What is your email address?',
+      message: 'What is your manager\'s email address?',
+      default: 'johnsmith@123.com'
     },
     {
       type: 'input',
       name: 'officeNumber',
-      message: 'Enter your office Number',
+      message: 'Enter your manager\'s office Number',
+      default: '8888 8888',
     },
 
   
@@ -76,22 +81,27 @@ const promptEngineer = () => {
         type: 'input',
         name: 'name',
         message: 'What is engineer\'s name?', 
+        default: 'Sam Joe',
       
       },
       {
         type: 'input',
         name: 'id',
         message: 'What\'s engineer\'s id?',
+        default: '02'
       },
       {
         type: 'input',
         name: 'email',
         message: 'What is your email address?',
+        default: 'samjoe@123.com',
       },
       {
         type: 'input',
         name: 'github',
         message: 'Enter your GitHub username',
+        default: 'samjoe',
+
       },
       
     ]);
@@ -103,28 +113,33 @@ const promptIntern = () => {
         type: 'input',
         name: 'name',
         message: 'What is intern\'s name?', 
+        default: 'Ann Smith',
       
       },
       {
         type: 'input',
         name: 'id',
         message: 'What\'s intern\'s id?',
+        default: '03',
       },
       {
         type: 'input',
         name: 'email',
         message: 'What is your email address?',
+        default: 'annsmith@123.com',
       },
       {
         type: 'input',
         name: 'school',
         message: 'Enter your school name',
+        default: 'MIT'
       },
       
     ]);
 };
 
-const generateHTML = (answers) =>
+const generateHTML = (answers) => {
+
   `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,7 +157,7 @@ const generateHTML = (answers) =>
     <h1 class="display-4">${answers.manager.name}</h1>
     <p class="occupation">Manager</p>
     <ul class="list-group">
-      <li class="list-group-item">ID: ${answer.Manager.id}</li>
+      <li class="list-group-item">ID: ${answer.manager.id}</li>
       <li class="list-group-item">Email: ${answers.manager.email}</li>
       <li class="list-group-item">Email: ${answers.manager.officeNumber}</li>
     </ul>
@@ -170,7 +185,8 @@ const generateHTML = (answers) =>
 
 </div>
 </body>
-</html>`;
+</html>`
+};
 
 // Bonus using writeFileAsync as a promise
 const teamArray = [];
@@ -182,14 +198,24 @@ const init = () => {
         teamArray.push(manager)
     
     promptUser2()
-    
-
-    
 
     })
- 
-
 
 };
 
 init();
+
+
+let html = [];
+// use a for loop to go through teamArray
+//conditional if statements : 
+//if (teamArray[i].getRole() === 'manager'{
+html.push(generateManager(teamArray[i]))
+}
+
+// generate manager function 
+function generateManager(manager) {
+  return `html for a card for the manager`
+}
+
+generateTeamHtml();

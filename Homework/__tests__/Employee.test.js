@@ -25,15 +25,15 @@ describe("Employee class", () => {
         expect(id).toStrictEqual(mockId);
     });
 
-    it ("should return id, when getID() is called", () => {
+    it ("should return id, when getEmail() is called", () => {
         // Arrange
         const mockName = "Susan"
         const mockId = 1
         const mockEmail = "a@b.com"
         const mockEmployee = new Employee(mockName , mockId , mockEmail );
         // Act
-        const id = mockEmployee.getID();
+        const email = mockEmployee.getEmail();
         // Assert
-        expect(id).toStrictEqual(mockId);
+        expect(email).toStrictEqual(mockEmail);
     });
 })

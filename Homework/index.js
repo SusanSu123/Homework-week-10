@@ -5,39 +5,38 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const fs = require('fs');
 const util = require('util');
-const generateTeamHtml = require('../Team-Profile-Generator/Src/Genteam');
+// generateTeamHtml = require('../Team-Profile-Generator/Src/Genteam');
 
 // create writeFile function using promises instead of a callback function
 const writeFileAsync = util.promisify(fs.writeFile);
 
 const promptUser1 = () => {
-  return inquirer.prompt([
+   inquirer.prompt([
     {
       type: 'input',
       name: 'name',
       message: 'What is your manager\'s name?',
-      default: 'John Smith',
+      //default: 'John Smith',
     },
     {
       type: 'input',
       name: 'id',
       message: 'What\'s your manager\'s id?',
-      default: '01'
+      //default: '01'
     },
    
     {
       type: 'input',
       name: 'email',
       message: 'What is your manager\'s email address?',
-      default: 'johnsmith@123.com'
+      ////default: 'johnsmith@123.com'
     },
     {
       type: 'input',
       name: 'officeNumber',
       message: 'Enter your manager\'s office Number',
-      default: '8888 8888',
-    },
-
+      ////default: '8888 8888',
+    }
   
   ]);
 };
@@ -52,12 +51,13 @@ const promptUser2 = () => {
       },
       
     ])
-    .then ((answers) => {
-        if (answers.employee === 'Engineer') {
+    .then ((employeeType) => {
+        if (employeeType.employee === 'Engineer') {
             promptEngineer()
             .then((answers) => {
                 const engineer = new Engineer (answers.name, answers.id, answers.email, answers.github)
                 teamArray.push(engineer)
+                console.log('after engineer:',teamArray);
                 return promptUser2()
 
             })
@@ -199,6 +199,8 @@ const init = () => {
     
     promptUser2()
 
+    }).catch(function(error){
+      console.log("error", error)
     })
 
 };
@@ -211,7 +213,7 @@ let html = [];
 //conditional if statements : 
 //if (teamArray[i].getRole() === 'manager'{
 html.push(generateManager(teamArray[i]))
-}
+
 
 // generate manager function 
 function generateManager(manager) {

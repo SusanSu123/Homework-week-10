@@ -187,7 +187,7 @@ function generateTeam(){
 
 
  fs.writeFile("./index.html", html, function(error){
-   console.log(error)
+   console.log('error',error)
  })
 
 }
@@ -197,7 +197,7 @@ function generateManager(manager){
   //<i class="fas fa-mug-hot"></i> 
     return ` <div class="col-3">
     <div class="card mx-auto  mb-3" style="max-width: 18rem;">
-      <h3 class="card-header bg-primary text-white">${manager.name}<br> <i class="fas fa-mug-hot"></i>Manager</h3>
+      <h3 class="card-header bg-primary text-white">${manager.name}<br> <i class="fa fa-coffee"></i>Manager</h3>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${manager.id}</li>
         <li class="list-group-item">Email: ${manager.email}</li>
@@ -214,7 +214,7 @@ function generateEngineers(engineers){
     engineers.forEach(element => {
         engineerHtml += `  <div class="col-3">
         <div class="card mx-auto  mb-3" style="max-width: 18rem;">
-         <h3 class="card-header bg-primary text-white">${element.name}<br><i class="fas fa-glasses"></i>Engineer</h3>
+         <h3 class="card-header bg-primary text-white">${element.name}<br><i class="fa fa-laptop"></i>Engineer</h3>
          <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${element.id}</li>
             <li class="list-group-item">Email: ${element.email}</li>
@@ -233,13 +233,13 @@ function generateIntern(interns){
    interns.forEach(element => {
        internHtml += ` <div class="col-3">
        <div class="card mx-auto  mb-3" style="max-width: 18rem;">
-        <h3 class="card-header bg-primary text-white">${element.name}<br><i class="fas fa-user-graduate"></i>Intern</h3>
+        <h3 class="card-header bg-primary text-white">${element.name}<br><i class="fa fa-graduation-cap"></i>Intern</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${element.id}</li>
             <li class="list-group-item">Email: ${element.email}</li>
             <li class="list-group-item">Email: ${element.school}</li>
         </ul>
-       <div>
+       </div>
      </div>`
    });
    return internHtml;

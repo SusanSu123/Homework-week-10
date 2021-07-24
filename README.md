@@ -6,7 +6,7 @@ The task is to build a Node.js command-line application that takes in informatio
 
 * Clone the repository
 
-* Git clone https://github.com/SusanSu123/Homework-week-10.git
+* Git clone https://github.com/SusanSu123/Object-Oriented-Programming-Team-Profile-Generator.git
 
 * Go to index.html
 
